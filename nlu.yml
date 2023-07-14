@@ -1,0 +1,11 @@
+nlu:
+- intent: greet
+  examples: |
+    - Hi
+    - Hello
+    - Hey
+
+- intent: goodbye
+  examples: |
+    - Bye
+    - Goodbye

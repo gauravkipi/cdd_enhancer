@@ -1,0 +1,2 @@
+event_broker:
+  url: <your_event_broker_url>

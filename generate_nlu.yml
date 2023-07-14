@@ -1,0 +1,26 @@
+import json
+import snowflake.connector
+
+def generate_nlu_examples(conversation):
+    # Connect to your LLM model and generate NLU examples
+    examples = []
+    for message in conversation:
+        if 'text' in message:
+            text = message['text']
+            # Use your LLM model to generate relevant NLU examples based on user messages
+            generated_examples = generate_examples_from_llm(text)
+            examples.extend(generated_examples)
+
+    return examples
+
+conversation_file = 'conversation_history.json'
+nlu_file = 'generated_nlu.yml'
+
+with open(conversation_file) as file:
+    conversation = json.load(file)
+
+generated_examples = generate_nlu_examples(conversation)
+
+with open(nlu_file, 'w') as file:
+    for example in generated_examples:
+        file.write(f'- {example}\n')
